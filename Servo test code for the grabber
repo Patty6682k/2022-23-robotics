@@ -1,0 +1,52 @@
+package org.firstinspires.ftc.teamcode;
+
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.ElapsedTime;
+
+import org.checkerframework.checker.units.qual.C;
+
+
+@TeleOp(name="Testy", group="Linear Opmode")
+//@Disabled
+public class Testy extends LinearOpMode {
+
+
+    // Declare OpMode members.
+    private Servo SL;
+    private Servo SR;
+
+
+    @Override
+    public void runOpMode() {
+        //defining all of the motors and servos
+        SL = hardwareMap.get(Servo.class,"SL");
+        SR = hardwareMap.get(Servo.class,"SR");
+
+        waitForStart();
+
+        while (opModeIsActive()) {
+            telemetry.update();
+
+            if(gamepad1.a){
+                SL.setPosition(0.6);
+                SR.setPosition(0);
+            }
+            else if (gamepad1.x){
+                SL.setPosition(0);
+                SR.setPosition(0.8);
+            }
+
+
+
+            telemetry.update();
+
+
+        }
+
+    }
+}
